@@ -147,7 +147,6 @@ while run:
 
                     formed_tr.pop(0)
 
-# dorobit aby sa akutualizovalo kolko mam love ked stlacim 3, aby som sa za kazdym nemusel odhlasovat a prihlasovat
                 with open(os.path.join(users_path + "\\" + user_id + ".txt"), "w") as file:
                     file.write(user_name + "\n")
                     file.write(str(user_amount) + "\n")
@@ -235,8 +234,6 @@ while run:
             with open(os.path.join(users_path + "\\" + destination_id + ".txt"), "r") as file:
                 des_lines = file.readlines()        # des_lines stands for destination_lines su to lajni prijimatela
 
-            #print(des_lines)
-            #recipient_private_key = (int(des_lines[2][:-1]), int(des_lines[3][:-1]))
             original_transaction, encoded_transaction = make_transaction(user_id, destination_id, amount_to_send, user_private_key)
 
             encoded_transaction_str = ""
