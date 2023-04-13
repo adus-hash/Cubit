@@ -32,3 +32,9 @@ But Client.py contains these functions:
 - make_transaction(sender_id, recipient_id, amount, private_key) - encoding(sha256(sender_ID + amount + recipient_ID, private_key)), returns non-encrypted and encrypted transaction # transaction look like this 'aaaaa0003aaaab', User 'aaaaa' is sending 3 Cubits to User 'aaaab'
 
 - verification(original_transaction, encoded_transaction, public_key) - for the transaction to take place, the receiver must match the digest and the decrypted transaction. You as a reciever you get digest and encrypted digest (encrypted with sender private key), what you do with this is, firstly decrypt encrypted messeg with sender public key and if that matches with digest transaction take a place.
+
+## Miner
+Miner is simple program, program only checks for transactions.txt file and inside that file must be at least 10 transactions, that he take first 10 transactions from this file start 'mining' a block. First he start with finding hash from previous_block_digest + transactions + random_num after that gives you some digest and then  you are finding this random_num while digest of previous_block_digest + transactions + nonce not equals the previous digest after each cycle you increase nonce + 1. If you find nonce you create .txt file which represent a block, this file contains hash of hole block, nonce and lastly are all 10 transactions.
+
+### Blockchain.py
+Is a program that controls if everything in blockchain is OK. For example, it takes block0 and block1 from block0 takes hash and from block1 takes nonce and all transactions if sha256(block0_hash + nonce + transactions) == block1_hash, then block1 is valid and is added to blockchain if not then block1 is thrown away
