@@ -11,7 +11,7 @@ Client is a .txt file which contains:
 - public key for RSA
 - 0/1 - is miner or not
 
-But Client.py contains these functions:
+Client.py contains these functions:
 
 - prime_nums() - uses Sieve of Eratosthenes to find prime numbers between 1-300, return an array of prime nums
 
@@ -36,5 +36,26 @@ But Client.py contains these functions:
 ## Miner
 Miner is simple program, program only checks for transactions.txt file and inside that file must be at least 10 transactions, that he take first 10 transactions from this file start 'mining' a block. First he start with finding hash from previous_block_digest + transactions + random_num after that gives you some digest and then  you are finding this random_num while digest of previous_block_digest + transactions + nonce not equals the previous digest after each cycle you increase nonce + 1. If you find nonce you create .txt file which represent a block, this file contains hash of hole block, nonce and lastly are all 10 transactions.
 
-### Blockchain.py
+## Blockchain.py
 Is a program that controls if everything in blockchain is OK. For example, it takes block0 and block1 from block0 takes hash and from block1 takes nonce and all transactions if sha256(block0_hash + nonce + transactions) == block1_hash, then block1 is valid and is added to blockchain if not then block1 is thrown away
+
+## Cubit.py
+Is a console app and provides user functions such as send/receive Cubits, information about number of Cubit, create a new account (new client) or verify client so he can start mining.
+
+### After you start Cubit.py you have 3 options:
+
+- Log in - you enter your ID and it will check if this user ID exist and if so it will log in to this ID
+
+- New account - it will ask you for age, then it will get new ID from wID.txt and run new_client(age)
+
+- Exit - exit app
+
+### When you are logged in, you have 4 options:
+
+- Make transaction - it will ask you receiver ID and how many Cubits you want to send, then will run make_transaction(user_id, receiver_id, amount_to_send, user_private_key), transaction will be finished after receiver will log in after that transaction will be added to transactions.txt 
+
+- Verify to mining - it only takes Client.txt and re-write his miner state from 0 to 1
+
+- Info about account - Return how many Cubits you have
+
+- Log out - logs you out
